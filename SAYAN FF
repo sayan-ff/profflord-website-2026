@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- =========================================================
+       PROFFLORD WEBSITE
+       Single-file website
+       ========================================================= -->
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="PROFFLORD - Free Fire gaming, gameplay, tutorials, tips, tricks, Shorts and OG SAYAN content."
+  >
+
+  <meta
+    name="keywords"
+    content="PROFFLORD, Free Fire, OG SAYAN, Free Fire gaming, Free Fire tips, Free Fire tutorials, gaming"
+  >
+
+  <meta
+    name="author"
+    content="PROFFLORD"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080808"
+  >
+
+  <!-- Open Graph -->
+  <meta
+    property="og:title"
+    content="PROFFLORD | Free Fire Gaming"
+  >
+
+  <meta
+    property="og:description"
+    content="Watch Free Fire gameplay, tutorials, tips, tricks and entertainment from PROFFLORD."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:url"
+    content="https://ogff.netlify.app/"
+  >
+
+  <title>PROFFLORD | Free Fire Gaming</title>
+
+
+  <style>
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:80px;
+    }
+
+    body{
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:#060606;
+      color:#ffffff;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input,
+    textarea{
+      font:inherit;
+    }
+
+    button{
+      cursor:pointer;
+    }
+
+
+    /* =========================================================
+       VARIABLES
+       ========================================================= */
+
+    :root{
+      --red:#ff2020;
+      --red-dark:#c40000;
+      --red-light:#ff4b4b;
+      --black:#060606;
+      --black2:#0b0b0b;
+      --card:#111111;
+      --card2:#151515;
+      --border:#292929;
+      --text:#ffffff;
+      --muted:#aaaaaa;
+      --soft:#d2d2d2;
+      --shadow:0 15px 45px rgba(0,0,0,.45);
+    }
+
+
+    /* =========================================================
+       GLOBAL
+       ========================================================= */
+
+    .container{
+      width:min(1120px,92%);
+      margin:auto;
+    }
+
+    section{
+      padding:90px 0;
+      position:relative;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:clamp(30px,6vw,48px);
+      line-height:1.1;
+      margin-bottom:14px;
+      font-weight:1000;
+    }
+
+    .section-title span{
+      color:var(--red);
+    }
+
+    .section-sub{
+      max-width:700px;
+      margin:0 auto 45px;
+      text-align:center;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .badge{
+      display:table;
+      margin:0 auto 15px;
+      padding:6px 14px;
+      border:1px solid var(--red);
+      border-radius:999px;
+      color:var(--red-light);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:1px;
+    }
+
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:9999;
+
+      background:rgba(5,5,5,.88);
+      backdrop-filter:blur(15px);
+
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    nav{
+      min-height:72px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .logo{
+      font-size:25px;
+      font-weight:1000;
+      letter-spacing:2px;
+      white-space:nowrap;
+    }
+
+    .logo span{
+      color:var(--red);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:25px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      font-size:13px;
+      font-weight:900;
+      color:#ddd;
+      transition:.25s;
+    }
+
+    .nav-links a:hover{
+      color:var(--red);
+    }
+
+    .nav-cta{
+      padding:9px 15px;
+      border-radius:7px;
+      background:var(--red);
+      color:white !important;
+    }
+
+
+    /* MOBILE MENU */
+
+    .menu-btn{
+      display:none;
+
+      width:44px;
+      height:44px;
+
+      border:1px solid #333;
+      border-radius:9px;
+
+      background:#111;
+      color:white;
+
+      font-size:23px;
+    }
+
+    .mobile-menu{
+      display:none;
+      padding:10px 0 18px;
+    }
+
+    .mobile-menu a{
+      display:block;
+      padding:13px 0;
+      border-bottom:1px solid #222;
+      font-weight:800;
+      color:#ddd;
+    }
+
+    .mobile-menu a:hover{
+      color:var(--red);
+    }
+
+    .mobile-menu.open{
+      display:block;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero{
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      text-align:center;
+
+      padding:120px 0 80px;
+
+      background:
+        radial-gradient(
+          circle at 50% 10%,
+          rgba(255,25,25,.28),
+          transparent 34%
+        ),
+
+        radial-gradient(
+          circle at 15% 70%,
+          rgba(255,0,0,.09),
+          transparent 25%
+        ),
+
+        linear-gradient(
+          135deg,
+          #080808,
+          #160000 50%,
+          #050505
+        );
+
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+
+      position:absolute;
+      inset:0;
+
+      background:
+        linear-gradient(
+          115deg,
+          transparent 40%,
+          rgba(255,255,255,.025) 50%,
+          transparent 60%
+        );
+
+      pointer-events:none;
+    }
+
+    .hero-content{
+      max-width:900px;
+      margin:auto;
+      position:relative;
+      z-index:2;
+    }
+
+    .eyebrow{
+      color:var(--red-light);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      font-size:13px;
+    }
+
+    .hero h1{
+      font-size:clamp(55px,15vw,120px);
+      line-height:.9;
+      margin:15px 0;
+
+      font-weight:1000;
+      letter-spacing:-4px;
+
+      text-shadow:
+        0 0 15px rgba(255,0,0,.25),
+        0 0 50px rgba(255,0,0,.18);
+    }
+
+    .hero h1 span{
+      color:var(--red);
+    }
+
+    .hero h2{
+      font-size:clamp(20px,4vw,36px);
+      letter-spacing:5px;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      max-width:700px;
+      margin:0 auto 32px;
+      color:#ccc;
+      font-size:17px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+
+      padding:14px 21px;
+
+      border-radius:8px;
+
+      font-weight:900;
+      font-size:14px;
+
+      border:1px solid var(--red);
+
+      transition:
+        transform .25s,
+        filter .25s,
+        box-shadow .25s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      filter:brightness(1.12);
+    }
+
+    .btn-primary{
+      background:var(--red);
+      box-shadow:0 10px 30px rgba(255,0,0,.22);
+    }
+
+    .btn-secondary{
+      background:#111;
+    }
+
+    .btn-dark{
+      background:#090909;
+      border-color:#333;
+    }
+
+
+    /* =========================================================
+       ABOUT
+       ========================================================= */
+
+    #about{
+      background:#080808;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.3fr 1fr;
+      gap:20px;
+    }
+
+    .card{
+      background:
+        linear-gradient(
+          145deg,
+          #141414,
+          #090909
+        );
+
+      border:1px solid var(--border);
+      border-radius:16px;
+
+      padding:30px;
+
+      box-shadow:var(--shadow);
+
+      transition:
+        transform .25s,
+        border-color .25s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#4a1b1b;
+    }
+
+    .card h3{
+      color:var(--red-light);
+      margin-bottom:10px;
+      font-size:21px;
+    }
+
+    .card p{
+      color:#bbb;
+      font-size:15px;
+    }
+
+    .feature-list{
+      list-style:none;
+      margin-top:15px;
+    }
+
+    .feature-list li{
+      padding:8px 0;
+      color:#ccc;
+    }
+
+
+    /* =========================================================
+       STATS
+       ========================================================= */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .stat{
+      text-align:center;
+      padding:25px 15px;
+    }
+
+    .stat-icon{
+      font-size:34px;
+      margin-bottom:8px;
+    }
+
+    .stat strong{
+      display:block;
+      color:white;
+      font-size:15px;
+      letter-spacing:1px;
+    }
+
+    .stat small{
+      display:block;
+      color:#888;
+      margin-top:4px;
+    }
+
+
+    /* =========================================================
+       VIDEOS
+       ========================================================= */
+
+    .videos{
+      background:#0b0b0b;
+    }
+
+    .video-tools{
+      max-width:700px;
+      margin:0 auto 35px;
+
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .search-box{
+      flex:1;
+      min-width:230px;
+
+      padding:13px 16px;
+
+      background:#111;
+      border:1px solid #333;
+      border-radius:8px;
+
+      color:white;
+      outline:none;
+    }
+
+    .search-box:focus{
+      border-color:var(--red);
+    }
+
+    .filter-btn{
+      padding:12px 16px;
+
+      border:1px solid #333;
+      border-radius:8px;
+
+      background:#111;
+      color:#ddd;
+
+      font-weight:800;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover{
+      background:var(--red);
+      border-color:var(--red);
+      color:white;
+    }
+
+    .video-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .video-card{
+      overflow:hidden;
+      padding:0;
+    }
+
+    .video-thumb-wrap{
+      position:relative;
+      overflow:hidden;
+      background:#181818;
+    }
+
+    .video-thumb{
+      display:block;
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+
+      transition:
+        transform .4s,
+        filter .4s;
+    }
+
+    .video-card:hover .video-thumb{
+      transform:scale(1.05);
+      filter:brightness(1.08);
+    }
+
+    .play-overlay{
+      position:absolute;
+      inset:0;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      background:rgba(0,0,0,.18);
+      pointer-events:none;
+    }
+
+    .play-circle{
+      width:58px;
+      height:58px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      border-radius:50%;
+
+      background:rgba(255,32,32,.95);
+
+      font-size:22px;
+
+      box-shadow:
+        0 0 0 7px rgba(255,32,32,.18),
+        0 10px 30px rgba(0,0,0,.5);
+    }
+
+    .video-info{
+      padding:21px;
+    }
+
+    .video-tag{
+      display:inline-block;
+
+      padding:4px 8px;
+
+      margin-bottom:9px;
+
+      border-radius:5px;
+
+      background:#260b0b;
+      color:#ff6666;
+
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:1px;
+    }
+
+    .video-info h3{
+      font-size:18px;
+      margin-bottom:8px;
+      line-height:1.3;
+    }
+
+    .video-info p{
+      color:#999;
+      font-size:14px;
+      margin-bottom:16px;
+    }
+
+    .watch{
+      color:var(--red-light);
+      font-size:13px;
+      font-weight:1000;
+    }
+
+    .no-results{
+      display:none;
+      text-align:center;
+      padding:30px;
+      color:#888;
+    }
+
+
+    /* =========================================================
+       SOCIALS
+       ========================================================= */
+
+    #socials{
+      background:#080808;
+    }
+
+    .social-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .social-card{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .social-name{
+      font-size:21px;
+      font-weight:1000;
+    }
+
+    .social-description{
+      display:block;
+      color:#888;
+      font-size:14px;
+      margin-top:3px;
+    }
+
+
+    /* =========================================================
+       CONTACT
+       ========================================================= */
+
+    .contact{
+      background:#0b0b0b;
+    }
+
+    .contact-box{
+      max-width:760px;
+      margin:auto;
+    }
+
+    .contact-form{
+      display:grid;
+      gap:14px;
+    }
+
+    .contact-form label{
+      font-size:13px;
+      color:#aaa;
+      font-weight:800;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+
+      margin-top:6px;
+
+      padding:14px 15px;
+
+      border:1px solid #333;
+      border-radius:8px;
+
+      background:#111;
+      color:white;
+
+      outline:none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus{
+      border-color:var(--red);
+    }
+
+    .contact-form textarea{
+      min-height:150px;
+      resize:vertical;
+    }
+
+    .form-note{
+      color:#777;
+      font-size:12px;
+    }
+
+
+    /* =========================================================
+       CTA
+       ========================================================= */
+
+    .cta{
+      text-align:center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,0,0,.15),
+          transparent 45%
+        ),
+
+        linear-gradient(
+          135deg,
+          #160000,
+          #090909
+        );
+    }
+
+    .cta p{
+      max-width:650px;
+      margin:0 auto 25px;
+      color:#ccc;
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer{
+      padding:35px 0;
+
+      text-align:center;
+
+      border-top:1px solid #222;
+
+      background:#050505;
+
+      color:#777;
+      font-size:13px;
+    }
+
+    footer strong{
+      color:#ddd;
+    }
+
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:18px;
+      margin:14px 0;
+    }
+
+    .footer-links a:hover{
+      color:var(--red);
+    }
+
+
+    /* =========================================================
+       BACK TO TOP
+       ========================================================= */
+
+    #topBtn{
+      position:fixed;
+
+      right:18px;
+      bottom:18px;
+
+      width:45px;
+      height:45px;
+
+      display:none;
+
+      align-items:center;
+      justify-content:center;
+
+      border:1px solid var(--red);
+      border-radius:50%;
+
+      background:var(--red);
+      color:white;
+
+      font-size:20px;
+
+      z-index:5000;
+
+      box-shadow:0 8px 25px rgba(0,0,0,.4);
+    }
+
+    #topBtn.show{
+      display:flex;
+    }
+
+
+    /* =========================================================
+       SCROLL ANIMATION
+       ========================================================= */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(25px);
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media(max-width:900px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .about-grid{
+        grid-template-columns:1fr;
+      }
+
+      .video-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .social-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+
+    @media(max-width:600px){
+
+      section{
+        padding:70px 0;
+      }
+
+      .hero{
+        min-height:92vh;
+      }
+
+      .hero h1{
+        letter-spacing:-2px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .hero-buttons .btn{
+        width:100%;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .video-grid{
+        grid-template-columns:1fr;
+      }
+
+      .social-card{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .social-card .btn{
+        width:100%;
+      }
+
+      .card{
+        padding:23px;
+      }
+
+      .section-title{
+        font-size:32px;
+      }
+
+      .search-box{
+        width:100%;
+      }
+
+      .filter-btn{
+        flex:1;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
+
+  <header>
+
+    <nav class="container">
+
+      <a
+        href="#home"
+        class="logo"
+        aria-label="PROFFLORD Home"
+      >
+        PROFF<span>LORD</span>
+      </a>
+
+
+      <ul class="nav-links">
+
+        <li>
+          <a href="#home">HOME</a>
+        </li>
+
+        <li>
+          <a href="#about">ABOUT</a>
+        </li>
+
+        <li>
+          <a href="#videos">VIDEOS</a>
+        </li>
+
+        <li>
+          <a href="#socials">SOCIALS</a>
+        </li>
+
+        <li>
+          <a href="#contact" class="nav-cta">CONTACT</a>
+        </li>
+
+      </ul>
+
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </nav>
+
+
+    <div
+      class="mobile-menu container"
+      id="mobileMenu"
+    >
+
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#videos">VIDEOS</a>
+      <a href="#socials">SOCIALS</a>
+      <a href="#contact">CONTACT</a>
+
+    </div>
+
+  </header>
+
+
+
+  <main>
+
+
+    <!-- =======================================================
+         HERO
+         ======================================================= -->
+
+    <section
+      class="hero"
+      id="home"
+    >
+
+      <div class="container hero-content reveal">
+
+        <div class="eyebrow">
+          Welcome to
+        </div>
+
+        <h1>
+          PROFF<span>LORD</span>
+        </h1>
+
+        <h2>
+          FREE FIRE GAMING
+        </h2>
+
+        <p>
+          Welcome to the official PROFFLORD gaming hub.
+          Watch intense Free Fire gameplay, learn powerful
+          tips and tricks, discover new ideas and join the squad.
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <a
+            class="btn btn-primary"
+            href="https://www.youtube.com/@PROF-s8l?sub_confirmation=1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔴 SUBSCRIBE ON YOUTUBE
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="https://www.tiktok.com/@ogsaiyan3"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🎵 FOLLOW ON TIKTOK
+          </a>
+
+          <button
+            class="btn btn-dark"
+            id="shareBtn"
+            type="button"
+          >
+            🔗 SHARE WEBSITE
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         ABOUT
+         ======================================================= -->
+
+    <section id="about">
+
+      <div class="container">
+
+        <div class="badge">
+          THE PROFFLORD SQUAD
+        </div>
+
+        <h2 class="section-title">
+          WHY <span>PROFFLORD?</span>
+        </h2>
+
+        <p class="section-sub">
+          Don't just watch gaming. Learn, improve and become part
+          of the PROFFLORD squad.
+        </p>
+
+
+        <div class="about-grid">
+
+
+          <div class="card reveal">
+
+            <h3>
+              🔥 Meet OG SAYAN
+            </h3>
+
+            <p>
+              PROFFLORD is built around Free Fire gameplay,
+              tutorials, tips, tricks, entertaining moments
+              and aggressive rush gameplay.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>
+                ⚡ Rush gameplay
+              </li>
+
+              <li>
+                🎯 Free Fire tips & tricks
+              </li>
+
+              <li>
+                🎮 Character & skill ideas
+              </li>
+
+              <li>
+                📱 Shorts & entertaining moments
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="card reveal">
+
+            <h3>
+              🚀 What You'll Find
+            </h3>
+
+            <p>
+              New content designed for Free Fire players
+              who want entertainment while improving their
+              gameplay.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>
+                🔥 Gameplay
+              </li>
+
+              <li>
+                🎯 Tutorials
+              </li>
+
+              <li>
+                ⚡ Tips & tricks
+              </li>
+
+              <li>
+                🧠 Game ideas
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <div class="stats">
+
+          <div class="card stat reveal">
+
+            <div class="stat-icon">
+              🔥
+            </div>
+
+            <strong>
+              RUSH GAMEPLAY
+            </strong>
+
+            <small>
+              Fast & aggressive
+            </small>
+
+          </div>
+
+
+          <div class="card stat reveal">
+
+            <div class="stat-icon">
+              🎯
+            </div>
+
+            <strong>
+              TIPS & TRICKS
+            </strong>
+
+            <small>
+              Improve your skills
+            </small>
+
+          </div>
+
+
+          <div class="card stat reveal">
+
+            <div class="stat-icon">
+              ⚡
+            </div>
+
+            <strong>
+              NEW CONTENT
+            </strong>
+
+            <small>
+              More uploads coming
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         VIDEOS
+         ======================================================= -->
+
+    <section
+      class="videos"
+      id="videos"
+    >
+
+      <div class="container">
+
+        <div class="badge">
+          WATCH & LEVEL UP
+        </div>
+
+        <h2 class="section-title">
+          LATEST <span>VIDEOS</span>
+        </h2>
+
+        <p class="section-sub">
+          Watch PROFFLORD gameplay, tutorials, tips and
+          entertaining Free Fire content.
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <div class="video-tools">
+
+          <input
+            type="search"
+            id="videoSearch"
+            class="search-box"
+            placeholder="🔎 Search videos..."
+            aria-label="Search videos"
+          >
+
+          <button
+            class="filter-btn active"
+            data-filter="all"
+            type="button"
+          >
+            ALL
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="tutorial"
+            type="button"
+          >
+            TUTORIALS
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="gameplay"
+            type="button"
+          >
+            GAMEPLAY
+          </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             VIDEO CARDS
+
+             IMPORTANT:
+             Future video updates happen in the JavaScript
+             VIDEO LIST near the bottom of this file.
+
+             You only need:
+             id
+             title
+             description
+             category
+             ===================================================== -->
+
+        <div
+          class="video-grid"
+          id="videoGrid"
+        >
+        </div>
+
+
+        <div
+          class="no-results"
+          id="noResults"
+        >
+          😕 No videos found.
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         SOCIALS
+         ======================================================= -->
+
+    <section id="socials">
+
+      <div class="container">
+
+        <h2 class="section-title">
+          JOIN THE <span>SQUAD</span>
+        </h2>
+
+        <p class="section-sub">
+          Follow PROFFLORD so you never miss a new upload.
+        </p>
+
+
+        <div class="social-grid">
+
+
+          <div class="card social-card reveal">
+
+            <div>
+
+              <div class="social-name">
+                ▶️ YouTube
+              </div>
+
+              <span class="social-description">
+                Full videos, tutorials & gameplay
+              </span>
+
+            </div>
+
+
+            <a
+              class="btn btn-primary"
+              href="https://www.youtube.com/@PROF-s8l?sub_confirmation=1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              SUBSCRIBE
+            </a>
+
+          </div>
+
+
+          <div class="card social-card reveal">
+
+            <div>
+
+              <div class="social-name">
+                🎵 TikTok
+              </div>
+
+              <span class="social-description">
+                Short clips, moments & quick tips
+              </span>
+
+            </div>
+
+
+            <a
+              class="btn btn-secondary"
+              href="https://www.tiktok.com/@ogsaiyan3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              FOLLOW
+            </a>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         CONTACT
+         ======================================================= -->
+
+    <section
+      class="contact"
+      id="contact"
+    >
+
+      <div class="container">
+
+        <div class="badge">
+          GET IN TOUCH
+        </div>
+
+        <h2 class="section-title">
+          CONTACT <span>PROFFLORD</span>
+        </h2>
+
+        <p class="section-sub">
+          Have a question, suggestion or business message?
+          Send a message here.
+        </p>
+
+
+        <div class="contact-box card reveal">
+
+
+          <!-- NETLIFY FORM -->
+
+          <form
+            name="profflord-contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="contact-form"
+          >
+
+            <input
+              type="hidden"
+              name="form-name"
+              value="profflord-contact"
+            >
+
+
+            <!-- HONEYPOT -->
+
+            <p hidden>
+              <label>
+                Don't fill this out:
+                <input name="bot-field">
+              </label>
+            </p>
+
+
+            <label>
+
+              Your Name
+
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+              >
+
+            </label>
+
+
+            <label>
+
+              Your Email
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              >
+
+            </label>
+
+
+            <label>
+
+              Message
+
+              <textarea
+                name="message"
+                placeholder="Write your message..."
+                required
+              ></textarea>
+
+            </label>
+
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+            >
+              📩 SEND MESSAGE
+            </button>
+
+
+            <div class="form-note">
+              Messages are handled through Netlify Forms.
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         FINAL CTA
+         ======================================================= -->
+
+    <section class="cta">
+
+      <div class="container reveal">
+
+        <div class="badge">
+          READY?
+        </div>
+
+        <h2 class="section-title">
+          BECOME PART OF <span>PROFFLORD</span>
+        </h2>
+
+        <p>
+          If you enjoy Free Fire, join the squad.
+          Subscribe on YouTube, follow on TikTok and
+          come back for the next upload.
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <a
+            class="btn btn-primary"
+            href="https://www.youtube.com/@PROF-s8l?sub_confirmation=1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔴 SUBSCRIBE NOW
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="https://www.tiktok.com/@ogsaiyan3"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🎵 FOLLOW TIKTOK
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <p>
+        © <span id="year"></span>
+        <strong>PROFFLORD</strong>.
+        All Rights Reserved.
+      </p>
+
+
+      <div class="footer-links">
+
+        <a href="#home">
+          Home
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#videos">
+          Videos
+        </a>
+
+        <a href="#socials">
+          Socials
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+      </div>
+
+
+      <p>
+        Free Fire Gaming • OG SAYAN • PROFFLORD
+      </p>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- BACK TO TOP -->
+
+  <button
+    id="topBtn"
+    aria-label="Back to top"
+    type="button"
+  >
+    ↑
+  </button>
+
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script>
+
+
+    /* =========================================================
+       EASY VIDEO UPDATE AREA
+
+       🔥 THIS IS THE MOST IMPORTANT PART FOR FUTURE UPDATES.
+
+       When you upload a new YouTube video:
+
+       1. Get the YouTube ID.
+
+       Example:
+       https://youtu.be/ABC123xyz
+
+       The ID is:
+       ABC123xyz
+
+       2. Copy one video object.
+
+       3. Change:
+          id
+          title
+          description
+          category
+
+       That's it.
+
+       The thumbnail and YouTube link are created automatically.
+       ========================================================= */
+
+
+    const VIDEOS = [
+
+      {
+        id: "m1q1lmm1NoI",
+        title: "NEW PROFFLORD FREE FIRE VIDEO",
+        description: "Watch the latest Free Fire upload from the PROFFLORD squad.",
+        category: "gameplay"
+      },
+
+
+      {
+        id: "VBm5irSeNVo",
+        title: "360° Movement Tutorial",
+        description: "Improve your movement and make your gameplay harder to predict.",
+        category: "tutorial"
+      },
+
+
+      {
+        id: "_opI1e2f-HQ",
+        title: "Best Character + Skill Combinations",
+        description: "Discover combinations that can help you build a stronger setup.",
+        category: "tutorial"
+      },
+
+
+      {
+        id: "a9IOsP-B_gM",
+        title: "CS Noob Prank",
+        description: "A fun Free Fire moment from the PROFFLORD squad.",
+        category: "gameplay"
+      }
+
+    ];
+
+
+    /* =========================================================
+       VIDEO ELEMENTS
+       ========================================================= */
+
+    const videoGrid =
+      document.getElementById("videoGrid");
+
+    const videoSearch =
+      document.getElementById("videoSearch");
+
+    const noResults =
+      document.getElementById("noResults");
+
+    const filterButtons =
+      document.querySelectorAll(".filter-btn");
+
+
+    let currentFilter = "all";
+
+
+    function createVideoCard(video){
+
+      const youtubeURL =
+        `https://youtu.be/${video.id}`;
+
+      const thumbnail =
+        `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`;
+
+      const article =
+        document.createElement("article");
+
+      article.className =
+        "card video-card reveal visible";
+
+      article.dataset.category =
+        video.category;
+
+      article.dataset.search =
+        (
+          video.title +
+          " " +
+          video.description
+        ).toLowerCase();
+
+
+      article.innerHTML = `
+
+        <div class="video-thumb-wrap">
+
+          <a
+            href="${youtubeURL}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch ${video.title}"
+          >
+
+            <img
+              class="video-thumb"
+              src="${thumbnail}"
+              alt="${video.title}"
+              loading="lazy"
+            >
+
+            <div class="play-overlay">
+
+              <div class="play-circle">
+                ▶
+              </div>
+
+            </div>
+
+          </a>
+
+        </div>
+
+
+        <div class="video-info">
+
+          <span class="video-tag">
+            ${video.category.toUpperCase()}
+          </span>
+
+          <h3>
+            ${video.title}
+          </h3>
+
+          <p>
+            ${video.description}
+          </p>
+
+          <a
+            class="watch"
+            href="${youtubeURL}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WATCH VIDEO →
+          </a>
+
+        </div>
+
+      `;
+
+      return article;
+    }
+
+
+    function renderVideos(){
+
+      const searchTerm =
+        videoSearch.value
+          .toLowerCase()
+          .trim();
+
+
+      videoGrid.innerHTML = "";
+
+      let count = 0;
+
+
+      VIDEOS.forEach(video => {
+
+        const matchesFilter =
+          currentFilter === "all" ||
+          video.category === currentFilter;
+
+
+        const text =
+          (
+            video.title +
+            " " +
+            video.description
+          ).toLowerCase();
+
+
+        const matchesSearch =
+          text.includes(searchTerm);
+
+
+        if(
+          matchesFilter &&
+          matchesSearch
+        ){
+
+          videoGrid.appendChild(
+            createVideoCard(video)
+          );
+
+          count++;
+
+        }
+
+      });
+
+
+      noResults.style.display =
+        count === 0
+          ? "block"
+          : "none";
+
+    }
+
+
+    renderVideos();
+
+
+    /* =========================================================
+       VIDEO SEARCH
+       ========================================================= */
+
+    videoSearch.addEventListener(
+      "input",
+      renderVideos
+    );
+
+
+    /* =========================================================
+       VIDEO FILTER
+       ========================================================= */
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+          });
+
+          button.classList.add("active");
+
+          currentFilter =
+            button.dataset.filter;
+
+          renderVideos();
+
+        }
+      );
+
+    });
+
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          mobileMenu.classList.toggle("open");
+
+        menuBtn.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
+
+        menuBtn.textContent =
+          isOpen ? "✕" : "☰";
+
+      }
+    );
+
+
+    /* Close mobile menu */
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            mobileMenu.classList.remove("open");
+
+            menuBtn.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuBtn.textContent = "☰";
+
+          }
+        );
+
+      });
+
+
+    /* =========================================================
+       SHARE WEBSITE
+       ========================================================= */
+
+    const shareBtn =
+      document.getElementById("shareBtn");
+
+
+    shareBtn.addEventListener(
+      "click",
+      async () => {
+
+        const shareData = {
+
+          title:
+            "PROFFLORD | Free Fire Gaming",
+
+          text:
+            "Check out the official PROFFLORD Free Fire gaming website.",
+
+          url:
+            window.location.href
+
+        };
+
+
+        try{
+
+          if(
+            navigator.share
+          ){
+
+            await navigator.share(
+              shareData
+            );
+
+          }else{
+
+            await navigator.clipboard.writeText(
+              window.location.href
+            );
+
+            alert(
+              "Website link copied!"
+            );
+
+          }
+
+        }catch(error){
+
+          /* User cancelled sharing */
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       BACK TO TOP
+       ========================================================= */
+
+    const topBtn =
+      document.getElementById("topBtn");
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if(
+          window.scrollY > 500
+        ){
+
+          topBtn.classList.add("show");
+
+        }else{
+
+          topBtn.classList.remove("show");
+
+        }
+
+      }
+    );
+
+
+    topBtn.addEventListener(
+      "click",
+      () => {
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      }
+    );
+
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if(
+              entry.isIntersecting
+            ){
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold:.12
+        }
+      );
+
+
+    revealElements.forEach(
+      element => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       CURRENT YEAR
+       ========================================================= */
+
+    document.getElementById(
+      "year"
+    ).textContent =
+      new Date().getFullYear();
+
+
+  </script>
+
+
+</body>
+</html>
